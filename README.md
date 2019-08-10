@@ -18,4 +18,4 @@ Click the checkbox to Enable/Disable the flow helper in each page.
 
 ![](./desc/flow-helper.jpg)
 
-## Tanks
+## Thanks
