@@ -40,8 +40,13 @@ function getSelectedParagraphText() {
 document.addEventListener('DOMContentLoaded', () => {
   let toBase64Btn = document.querySelector('#toBase64Btn');
   let toStringBtn = document.querySelector('#toStringBtn');
+  let toggleNeedFlowHelperBtn = document.querySelector('#toggleNeedFlowHelperBtn');
   let srcStringInput = document.querySelector('#srcString');
   let base64StringInput = document.querySelector('#base64String');
+
+  chrome.storage.sync.get(['needFlowHelper'], function(items) {
+    toggleNeedFlowHelperBtn.checked = items.needFlowHelper
+  });
 
   let selection = window.getSelection()
 
@@ -66,5 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
       let base64Res = fromBase64Str(srcVal);
       srcStringInput.value = base64Res;
     }
+  })
+  
+  toggleNeedFlowHelperBtn.addEventListener('click', (event) => {
+    // 保存数据
+    let isNeed = event.target.checked;
+    chrome.storage.sync.set({needFlowHelper: isNeed}, () => {
+    });
   })
 });

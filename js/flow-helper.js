@@ -21,8 +21,6 @@ function offset(el) {
   return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
 }
 
-const containerID = 'Base64HelperResContainer';
-
 function toBase64Str(str = '') {
   return btoa(unescape(encodeURIComponent(str)));
 }
@@ -44,6 +42,8 @@ function fromBase64Str(str) {
   }
   return res;
 }
+
+const containerID = 'Base64HelperResContainer';
 
 /** 主要的容器 */
 let container
@@ -101,8 +101,13 @@ const handleDBClick = (event) => {
   }
 }
 const handleDOMLoaded = () => {
-  container = setDOMById(containerID)
-  document.addEventListener('dblclick', handleDBClick)
+  /** 如果需要浮动助手 */
+  chrome.storage.sync.get(['needFlowHelper'], function(items) {
+    if(items.needFlowHelper) {
+      container = setDOMById(containerID)
+      document.addEventListener('dblclick', handleDBClick)
+    }
+  });
 }
 
 document.addEventListener('DOMContentLoaded', handleDOMLoaded);
