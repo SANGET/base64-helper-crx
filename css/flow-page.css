@@ -1,0 +1,26 @@
+#Base64HelperResContainer {
+  padding: 2px 5px;
+  background-color: #FFF;
+  box-shadow: 0 0 24px rgba(0,0,0,0.1);
+  border-radius: 3px;
+}
+#Base64HelperResContainer.hide {
+  display: none;
+}
+.base64-helper-flow-btn {
+  cursor: pointer;
+}
+#Base64HelperResContainer .form-input {
+  background-color: transparent;
+  border: 1px solid #EEE;
+  padding: 10px 10px;
+  min-height: 30px;
+  box-shadow: none!important;
+  margin: 10px 0;
+  border-radius: 3px;
+}
+
+#Base64HelperResContainer .form-input:focus {
+  outline: none;
+  border-color: #376bfb;
+}
